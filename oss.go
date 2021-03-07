@@ -136,7 +136,7 @@ func ossUploadFile(ft *fastToken, file string) (e error) {
 
 	ot, err := getOSSToken()
 	checkErr(err)
-	client, err := oss.New(ot.endpoint, ot.AccessKeyID, ot.AccessKeySecret)
+	client, err := oss.New(ot.endpoint, ot.AccessKeyID, ot.AccessKeySecret, oss.Proxy("http://127.0.0.1:8933"))
 	checkErr(err)
 	bucket, err := client.Bucket(ft.Bucket)
 	checkErr(err)
